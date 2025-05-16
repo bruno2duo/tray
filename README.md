@@ -1,15 +1,21 @@
-# Após clonar o repositório
-Executar os comandos na raiz do projeto
-composer install
-composer update
-
-
 # Docker
 [Como iniciar - Linux]
 -- url
 Projeto público
 Entrar no diretório da pasta onde foi baixado todo o conteúdo do projeto no git
 Executar o comando: docker-compose up --build
+
+OBS : Caso tenha problema no mysql, executar os comandos abaixo na raiz do projeto:
+docker exec -it db mysql -uroot -proot
+
+CREATE USER 'root'@'%' IDENTIFIED BY 'root';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+exit;
+
+docker exec -it laravel-app bash
+
+php artisan migrate
 
 OBS : Caso tenha alguma problema no @vite, executar o comando abaixo na raiz do projeto:
 npm run dev
